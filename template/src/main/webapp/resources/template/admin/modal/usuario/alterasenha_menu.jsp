@@ -19,7 +19,7 @@
         <form id="formusuario_alterasenha_menu" action="alterasenha" method="POST">
                 <div class="panel-body">   
                     <input type="hidden" class="form-control" placeholder="Matricula" name="matricula" id="novasenha_menu_matricula" value="<%= SecurityContextHolder.getContext().getAuthentication().getName() %>" readonly/>
-                    <h5>Olá <strong>${nome_usuario_sessao}</strong> sua matrícula é <strong><%= SecurityContextHolder.getContext().getAuthentication().getName() %></strong>, se deseja alterar a senha desta conta, preencha os campos abaixo com a nova senha.</h5>
+                    <h5>Olá <strong> ${nome_usuario_sessao} </strong> sua matrícula é <strong><%= SecurityContextHolder.getContext().getAuthentication().getName() %></strong>, se deseja alterar a senha desta conta, preencha os campos abaixo com a nova senha.</h5>
                     <br>
                     <div class="form-group">
                             <input type="password" class="form-control" placeholder="Nova senha" name="senha" id="novasenha_senha_menu"/>
