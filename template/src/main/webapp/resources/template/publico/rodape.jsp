@@ -1,0 +1,1 @@
+<label>Sistema Bookle Web - Todos direitos são reservados BookleWeb.</label>

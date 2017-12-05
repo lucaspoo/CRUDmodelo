@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/security
+						http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+	<http auto-config="true" access-denied-page="/403">
+		
+		<!-- INTERCEPTADORES ROLE ADMIN -->
+		<intercept-url pattern="/admin**" access="ROLE_ADMIN,ROLE_USER"/>
+		<intercept-url pattern="/pesquisa" access="ROLE_ADMIN,ROLE_USER"/>
+		
+		<intercept-url pattern="/gerenciador" access="ROLE_ADMIN"/>
+		
+		<intercept-url pattern="/gerenciadorusuario" access="ROLE_ADMIN"/>
+
+		<intercept-url pattern="/relatoriousuario" access="ROLE_ADMIN"/>
+			
+		<!-- INTERCEPTADORES DO ROLE USER -->
+		<intercept-url pattern="/user**" access="ROLE_USER,ROLE_ADMIN"/>
+		
+		
+		<form-login 
+			login-page="/login"
+			authentication-failure-url="/login?error=Usuário ou senha inválido!"
+			authentication-success-handler-ref="autenticacaoHandler"
+		/>
+       
+        <logout logout-url="/j_spring_security_logout" logout-success-url="/login" invalidate-session="true"
+            delete-cookies="JSESSIONID" /> 
+		
+		<session-management invalid-session-url="/login">
+			<concurrency-control
+				max-sessions="50"
+				error-if-maximum-exceeded="true" />
+		</session-management>
+	</http>
+
+	<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="SELECT matricula, senha, 'true' as enable FROM tb_usuario WHERE matricula=?"
+				authorities-by-username-query="SELECT matricula, permissao FROM tb_usuario WHERE matricula=?" />
+				
+		</authentication-provider>
+	</authentication-manager>
+
+   <beans:bean id="autenticacaoHandler" class="br.com.rapidonet.template.util.AutenticacaoHandler" />
+
+   <beans:bean id="webSecurityExpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
+
+
+	<beans:bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="url"	value="jdbc:mysql://localhost/entrevista" />
+		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<beans:property name="username" value="root" />
+		<beans:property name="password" value="root" />
+	</beans:bean>
+
+</beans:beans>
