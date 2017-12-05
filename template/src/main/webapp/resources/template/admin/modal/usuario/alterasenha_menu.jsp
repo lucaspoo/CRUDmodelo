@@ -16,7 +16,7 @@
         <h4><strong>Alterar Senha</strong></h4>
       </div>
       <div class="modal-body">
-        <form id="formusuario_alterasenha_menu" action="alterasenhamenu" method="POST">
+        <form id="formusuario_alterasenha_menu" action="alterasenha" method="POST">
                 <div class="panel-body">   
                     <input type="hidden" class="form-control" placeholder="Matricula" name="matricula" id="novasenha_menu_matricula" value="<%= SecurityContextHolder.getContext().getAuthentication().getName() %>" readonly/>
                     <h5>Olá <strong>${nome_usuario_sessao}</strong> sua matrícula é <strong><%= SecurityContextHolder.getContext().getAuthentication().getName() %></strong>, se deseja alterar a senha desta conta, preencha os campos abaixo com a nova senha.</h5>
