@@ -24,7 +24,6 @@
                     <div class="form-group">
                             <input type="password" class="form-control" placeholder="Nova senha" name="senha" id="novasenha_senha_menu"/>
                     </div> 
-                    
                     <div class="form-group">
                             <input type="password" class="form-control" placeholder="Confirme a nova senha" name="senhaconfirmacao" id="novasenha_confirmacao_menu"/>
                     </div> 
