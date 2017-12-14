@@ -14,6 +14,7 @@
 		<intercept-url pattern="/pesquisa" access="ROLE_ADMIN,ROLE_USER"/>
 		
 		<intercept-url pattern="/gerenciador" access="ROLE_ADMIN"/>
+		<intercept-url pattern="/consumirws" access="ROLE_ADMIN"/>
 		
 		<intercept-url pattern="/gerenciadorusuario" access="ROLE_ADMIN"/>
 

@@ -12,6 +12,7 @@
 
 		<!-- Aqui são listadas todas as entidades -->
 		<class>br.com.rapidonet.template.model.Usuario</class>
+		<class>br.com.rapidonet.template.model.Negociacao</class>
 		
 		<properties>
 			<!-- Propriedades JDBC -->

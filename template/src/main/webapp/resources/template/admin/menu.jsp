@@ -48,6 +48,24 @@
         </li>
       </sec:authorize>    
  
+  <sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_USER')">    
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              Consumir WS<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+          	<sec:authorize access="hasRole('ROLE_ADMIN')"> 
+          	<form id="formws_consumows" action="consumirws" method="POST">
+            <li> <button type="submit" class="btn btn-sm btn-success" >
+                    <span class="glyphicon glyphicon-ok"></span>
+                   <strong> Enviar Requisição</strong>
+                </button></li>
+            </form>
+            </sec:authorize>  
+          </ul>
+        </li>
+      </sec:authorize>  
+ 
+ 
      <sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_USER')">    
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
